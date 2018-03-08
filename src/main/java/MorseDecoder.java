@@ -54,7 +54,9 @@ public class MorseDecoder {
         double[] sampleBuffer = new double[BIN_SIZE * inputFile.getNumChannels()];
         for (int binIndex = 0; binIndex < totalBinCount; binIndex++) {
             // Get the right number of samples from the inputFile
+            int nOfSample = (int) inputFile.getNumFrames();
             // Sum all the samples together and store them in the returnBuffer
+            returnBuffer[binIndex] = inputFile.readFrames(sampleBuffer, nOfSample);
         }
         return returnBuffer;
     }
